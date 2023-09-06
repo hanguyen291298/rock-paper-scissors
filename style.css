@@ -1,0 +1,67 @@
+body{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    background-image: url("background.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    
+}
+.title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 800px;
+    border: 1px solid lightblue;
+    border-radius: 10px;
+    margin: 50px auto;
+}
+
+.title h1{
+    font-size: 46px;
+    padding: 0 10px;
+    color: aqua;
+    text-shadow: 4px 2px 1px grey;
+}
+
+.btn-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+#computer-weapon, h3{
+    color: aqua;
+    font: 32px;
+ }
+
+.btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    
+}
+
+button{
+    padding: 0;
+    border-radius: 8px;
+    border: 1px solid gray;
+}
+.btn button img{
+    width: 160px;
+    height: auto;
+}
+
+.result{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: aqua;
+    font-size: 32px;
+}
