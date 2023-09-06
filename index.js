@@ -6,70 +6,90 @@
 // Third, Create a function play(playerSelection, computerSelection) to count the score 
 //  Afer 5 round and print the result of that secsion.
 
-const arr_weapons = ["rock", "scissors", "paper"];
+const ARRAY_WEAPONS = ["rock", "scissors", "paper"];
+
 let user_score = 0;
 let computer_score = 0;
 let computer_weapon;
-let round = 1;
+let user_weapon;
+
+const btn1 = document.querySelector('#rock');
+const btn2 = document.querySelector('#paper')
+const btn3 = document.querySelector('#scissors')
+
+const parent = document.querySelector('.result')
+let new_div = document.createElement("div")
+parent.appendChild(new_div)
+
 
 function getComputerChoice(){
     let randomIndex;
-    randomIndex = Math.floor(Math.random() * arr_weapons.length)
-    console.log(randomIndex)
-    return arr_weapons[randomIndex]
+    randomIndex = Math.floor(Math.random() * ARRAY_WEAPONS.length)    
+    return ARRAY_WEAPONS[randomIndex]
 }
 
 function playRound(playerSelection, computerSelection){
+    
     if (playerSelection == computerSelection){
-        console.log(`That fair. ${playerSelection} = ${computerSelection}`)
+        new_div.textContent =`That fair. ${playerSelection} AND ${computerSelection}`
     }
     else{
         if (playerSelection == 'rock' && computerSelection == "scissors"){
             user_score++
-            console.log(`You win! ${playerSelection} beats ${computerSelection}.`)
-            
+            new_div.textContent =`You win! ${playerSelection} beats ${computerSelection}.`            
         }
         else if (playerSelection == 'paper' && computerSelection == "rock"){
             user_score++
-            console.log(`You win! ${playerSelection} beats ${computerSelection}.`)
-            
+            new_div.textContent = `You win! ${playerSelection} beats ${computerSelection}.`            
         }
         else if (playerSelection == 'scissors' && computerSelection == "paper"){
             user_score++
-            console.log(`You win! ${playerSelection} beats ${computerSelection}.`)
-            
+            new_div.textContent = `You win! ${playerSelection} beats ${computerSelection}.`           
         }
         else {
             computer_score++
-            console.log(`You Lose! ${computerSelection} beats ${playerSelection}.`)
+            new_div.textContent = `You Lose! ${computerSelection} beats ${playerSelection}.`
         }
     }
 }
 
+function check_score(user_score, computer_score){
+    if (user_score < computer_score){
+        console.log(`Your score is ${user_score} and computer score is ${computer_score}. Computer win!`)
+    }
+    else if(user_score > computer_score){
+        console.log(`Your score is ${user_score} and computer score is ${computer_score}. You win!`)
+    }
+    else{
+        (`Your score is ${user_score} and computer score is ${computer_score}. That's fair play`)
+    }
+}
+
+
 function game(){
-    console.log(`Your score: ${user_score} - computer score: ${computer_score}`)
+    
     computer_weapon = getComputerChoice()
-    console.log(computer_weapon)
-    const user_weapon = prompt("Your choice: ").toLowerCase();
+    console.log(`user_weapon: ${user_weapon}`)
+    console.log(`computer_weapon: ${computer_weapon}`)   
+    document.getElementById('computer-weapon').innerHTML = "Computer weapon is: " + computer_weapon
     playRound(user_weapon, computer_weapon)
+    check_score(user_score, computer_score)
 
 }
 
-while (round <= 5){
-    round++
+btn1.addEventListener('click', () => {
+    user_weapon = 'rock';
     game()
-}
-console.log(user_score, computer_score)
-if (user_score < computer_score){
-    console.log(`Your score is ${user_score} and computer score is ${computer_score}. Computer win!`)
-}
-else if(user_score > computer_score){
-    console.log(`Your score is ${user_score} and computer score is ${computer_score}. You win!`)
-}
-else{
-    (`Your score is ${user_score} and computer score is ${computer_score}. That's fair play`)
-}
+})
+btn2.addEventListener('click', () => {
+    user_weapon = 'paper';
+    game()
 
+})
+btn3.addEventListener('click', () => {
+    user_weapon = 'scissors';
+    game()
+})
 
 
 
