@@ -4,8 +4,8 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 50px;
-    background-image: url("background.jpg");
+    gap: 20px;
+    background-image: url('Images/background.jpg');
     background-size: cover;
     background-attachment: fixed;
     
